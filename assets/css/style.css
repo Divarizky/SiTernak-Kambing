@@ -4,7 +4,7 @@
     /* primary color */
     --secondary-green-color: #2A6B2D;
     /* secondary color */
-    --green-hover-color: #67C16B;
+    --green-hover-color: #85c088;
     --light-green-hover-color: #E8F5E8;
     /* hover color */
     --light-green-bg: #E2F6E3;
@@ -13,7 +13,7 @@
     --text-color-green: #4A7C59;
     --text-color-dark: #353535;
     --text-color-light: #FFFFFF;
-    --button-color: #265529;
+    --button-color: #4A7C59;
     --border-color: #DDDDDD;
 }
 
@@ -83,4 +83,18 @@ body {
     height: 18px;
     margin-right: 20px;
     object-fit: contain;
+}
+
+/* Button Logout */
+.btn-logout {
+    background: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 6rem;
+    margin: 1rem 1.25rem;
+}
+
+.btn-logout:hover {
+    background: var(--green-hover-color);
 }
