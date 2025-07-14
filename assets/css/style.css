@@ -1,4 +1,22 @@
 /* Pengaturan CSS Dasar */
+:root {
+    --primary-green: #2E7d32;
+    /* primary color */
+    --secondary-green-color: #2A6B2D;
+    /* secondary color */
+    --green-hover-color: #67C16B;
+    --light-green-hover-color: #E8F5E8;
+    /* hover color */
+    --light-green-bg: #E2F6E3;
+    /* background color */
+    --text-color-dark-green: #0D260F;
+    --text-color-green: #4A7C59;
+    --text-color-dark: #353535;
+    --text-color-light: #FFFFFF;
+    --button-color: #265529;
+    --border-color: #DDDDDD;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +26,7 @@
 
 body {
     min-height: 100vh;
-    background-color: #e2f6e3;
+    background-color: var(--light-green-bg);
 }
 
 /* Sidebar */
@@ -24,7 +42,7 @@ body {
 
 .sidebar-header {
     padding: 1.25rem;
-    color: #204724;
+    color: var(--text-color-green);
 }
 
 .sidebar-header p {
@@ -39,7 +57,7 @@ body {
 }
 
 .nav-sidebar ul li a {
-    color: #204724;
+    color: var(--text-color-green);
     text-decoration: none;
     font-size: 14px;
     display: flex;
@@ -51,13 +69,13 @@ body {
 }
 
 .nav-sidebar ul li a.active {
-    background-color: #e2f6e3;
+    background-color: var(--light-green-hover-color);
     font-weight: 600;
     transition: 0.2s ease-in-out ;
 }
 
 .nav-sidebar ul li a:hover {
-    background: #e2f6e3;
+    background: var(--light-green-hover-color);
 }
 
 .sidebar-icon {
