@@ -1,0 +1,16 @@
+# Abaikan folder vendor dari Composer
+/vendor/
+
+# Abaikan file konfigurasi lokal
+/config/local.php
+.env
+
+# Abaikan file log
+*.log
+
+# Abaikan file sistem operasi
+.DS_Store
+Thumbs.db
+
+# Abaikan file upload
+/public/uploads/

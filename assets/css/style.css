@@ -1,0 +1,68 @@
+/* Pengaturan CSS Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #e2f6e3;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 275px;
+    height: 100vh;
+    position: fixed;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    padding: 1.25rem;
+    color: #204724;
+}
+
+.sidebar-header p {
+    font-size: 14px;
+    padding: 10px 0 10px;
+}
+
+.sidebar-header ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-sidebar ul li a {
+    color: #204724;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.nav-sidebar ul li a.active {
+    background-color: #e2f6e3;
+    font-weight: 600;
+    transition: 0.2s ease-in-out ;
+}
+
+.nav-sidebar ul li a:hover {
+    background: #e2f6e3;
+}
+
+.sidebar-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 20px;
+    object-fit: contain;
+}
