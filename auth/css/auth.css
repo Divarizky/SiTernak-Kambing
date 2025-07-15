@@ -1,0 +1,134 @@
+/* Styles for Auth Pages (Login, Forgot Password) */
+.auth-container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 30px;
+}
+
+.auth-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    background-color: #e2f6e3;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.auth-header h1 {
+    color: #204724;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.auth-header p, .reset-instruction {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.form-options {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.form-options a {
+    color: #204724;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-options a:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #218838;
+}
+
+.login-footer {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.login-footer a {
+    color: #204724;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Alert messages */
+.alert {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
