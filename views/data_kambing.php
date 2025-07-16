@@ -1,4 +1,8 @@
 <?php
+// Mengecek sesi role User atau Admin (by Login)
+session_start();
+$isLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+
 require '../config/database.php';
 
 $kambingList = getDataKambing();
@@ -37,9 +41,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <img class="sidebar-icon" src="../assets/images/icons/goat.png" alt="goat">
                     <span>Data Kambing</span>
                 </a>
-                <form action="views/auth/logout.php" method="POST">
-                    <button type="submit" class="btn-logout">Logout</button>
-                </form>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                    <form action="../views/auth/logout.php" method="POST">
+                        <button type="submit" class="btn-logout">Logout</button>
+                    </form>
+                <?php endif; ?>
+
             </nav>
         </aside>
 
@@ -47,8 +54,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <main id="main-content" class="main-content">
             <div class="kambing-header">
                 <h2>Data Kambing</h2>
-                <!-- Button Tambah Kambing -->
-                <button class="btn-add-kambing" type="button">
+                <button class="btn-add-kambing" type="button" onclick="<?php echo $isLoggedIn ? '' : 'window.location.href=\'auth/login.php\'' ?>">
                     <img class="plus-icon" src="../assets/images/icons/plus-white.png" alt="goat">
                     Tambah Data Kambing
                 </button>
@@ -86,6 +92,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <?php include 'form_kambing.php'; ?>
+    <script>
+        const isLoggedIn = <?= isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true ? 'true' : 'false' ?>;
+    </script>
     <script src="../assets/js/kambing.js"></script>
 </body>
 

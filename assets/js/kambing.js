@@ -47,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Tombol "Tambah Data Kambing"
     btnAdd.addEventListener('click', () => {
+        if (!isLoggedIn) {
+            window.location.href = "auth/login.php";
+            return;
+        }
+        
         form.reset();
         modalTitle.textContent = 'Tambah Data Kambing';
         actionInput.value = 'create';
@@ -69,14 +74,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Tombol "Edit"
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', () => {
+            if (!isLoggedIn) {
+                window.location.href = "auth/login.php";
+                return;
+            }
             const kambingData = JSON.parse(button.getAttribute('data-kambing'));
             modalTitle.textContent = 'Edit Data Kambing';
             actionInput.value = 'update';
             btnSimpan.style.display = 'block';
-            populateForm(kambingData, false); // Isi form dan buat bisa di-edit
+            populateForm(kambingData, false);
             openModal();
         });
     });
+
 
     // Handle form submission dengan AJAX
     form.addEventListener('submit', function (event) {
@@ -107,6 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle hapus dengan AJAX
     document.querySelectorAll('.btn-hapus').forEach(button => {
         button.addEventListener('click', () => {
+            if (!isLoggedIn) {
+                window.location.href = "auth/login.php";
+                return;
+            }
+
             const kambingData = JSON.parse(button.getAttribute('data-kambing'));
             const confirmation = confirm(`Apakah Anda yakin ingin menghapus data kambing dengan ID: KB${String(kambingData.id_kambing).padStart(3, '0')}?`);
 
@@ -123,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(data => {
                         if (data.success) {
                             alert(data.message);
-                            location.reload(); // Memuat ulang halaman untuk melihat perubahan
+                            location.reload();
                         } else {
                             alert('Error: ' + data.message);
                         }
@@ -135,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
 
     // Tombol close dan batal di modal
     btnClose.addEventListener('click', closeModal);

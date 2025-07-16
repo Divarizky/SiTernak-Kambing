@@ -1,4 +1,8 @@
 <?php
+// Mengecek sesi role User atau Admin (by Login)
+session_start();
+$isLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+
 // Mengambil data dari Database
 require_once 'config/database.php';
 $totalKambing = getTotalKambing();
@@ -35,9 +39,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <img class="sidebar-icon" src="assets/images/icons/goat.png" alt="goat">
                     <span>Data Kambing</span>
                 </a>
-                <form action="views/auth/logout.php" method="POST">
-                    <button type="submit" class="btn-logout">Logout</button>
-                </form>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                    <form action="views/auth/logout.php" method="POST">
+                        <button type="submit" class="btn-logout">Logout</button>
+                    </form>
+                <?php endif; ?>
             </nav>
         </aside>
 
