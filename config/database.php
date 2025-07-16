@@ -120,6 +120,21 @@ function deleteDataKambing($id)
     return $stmt3->execute();
 }
 
+function getTotalKambing()
+{
+    global $koneksi;
+    $result = $koneksi->query("SELECT COUNT(*) as total FROM kambing");
+    return $result ? $result->fetch_assoc()['total'] : 0;
+}
+
+function getKesehatanKambing()
+{
+    global $koneksi;
+    $result = $koneksi->query("SELECT COUNT(*) as jumlah FROM kambing WHERE status_kesehatan != 'Sehat'");
+    return $result ? $result->fetch_assoc()['jumlah'] : 0;
+}
+
+
 // === Handler request POST ===
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');

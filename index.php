@@ -1,4 +1,9 @@
 <?php
+// Mengambil data dari Database
+require_once 'config/database.php';
+$totalKambing = getTotalKambing();
+$perluPerhatian = getKesehatanKambing();
+
 // Mendapatkan nama file halaman saat ini
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
@@ -42,7 +47,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <h2>Dashboard</h2>
             </div>
             <!-- Card -->
-
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-title">Total Kambing</div>
+                    <div class="card-value"><?= $totalKambing ?></div>
+                    <div class="card-desc">Ekor kambing</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Peringatan</div>
+                    <div class="card-value"><?= $perluPerhatian ?></div>
+                    <div class="card-desc warning">Perlu perhatian</div>
+                </div>
+            </div>
         </main>
     </div>
 </body>
