@@ -30,7 +30,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <img class="sidebar-icon" src="assets/images/icons/goat.png" alt="goat">
                     <span>Data Kambing</span>
                 </a>
-                <button class="btn-logout" type="button">Logout</button>
+                <form action="views/auth/logout.php" method="POST">
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
             </nav>
         </aside>
 
