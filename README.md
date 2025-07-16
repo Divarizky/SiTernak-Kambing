@@ -62,7 +62,12 @@ index.php
 1. Clone repositori ini
 2. Buat database dan import db `peternak_kambing.sql`
 3. Atur koneksi di `config/db_connect.php`
-4. Jalankan lewat browser lokal (`localhost/{proyek}/`)
+4. Jalankan lewat browser lokal (`http://localhost/{proyek}/`)
+
+### Login Admin
+
+- Username: `tester`
+- Password: `admin12345`
 
 ---
 
