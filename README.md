@@ -41,17 +41,21 @@
 
 ```
 /config
+    api_sensor.php
     database.php
     db_connect.php
+    proses_sensor.php
 /views
     auth/forgot_password.php
     auth/login.php
     auth/logout.php
     data_kambing.php
     form_kambing.php
+    form_sensor.php
 /assets
     /css/style.css
     /js/kambing.js
+    /js/sensor.js
 index.php
 ```
 
