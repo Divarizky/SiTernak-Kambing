@@ -24,12 +24,12 @@ if ($id_kandang > 0) {
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
-
     $stmt->close();
     echo json_encode($data);
+    exit;
 } else {
     echo json_encode([]);
+    exit;
 }
 
 $koneksi->close();
-?>
