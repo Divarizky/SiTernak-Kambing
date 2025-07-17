@@ -71,7 +71,7 @@ index.php
 ### Login Admin
 
 - Username: `tester`
-- Password: `admin12345`
+- Password: `Admin12345`
 
 ---
 
