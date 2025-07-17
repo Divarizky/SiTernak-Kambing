@@ -1,4 +1,28 @@
-/* Pengaturan CSS Dasar */
+/*
+|----------------------------------------
+| Pengaturan CSS Dasar
+|----------------------------------------
+*/
+:root {
+    --primary-green: #2E7d32;
+    /* primary color */
+    --secondary-green-color: #2A6B2D;
+    /* secondary color */
+    --light-color: #F4F4F4;
+    --red-color: #ef4444;
+    --green-hover-color: #85c088;
+    --light-green-hover-color: #E8F5E8;
+    /* hover color */
+    --light-green-bg: #E2F6E3;
+    /* background color */
+    --text-color-dark-green: #0D260F;
+    --text-color-green: #4A7C59;
+    --text-color-dark: #353535;
+    --text-color-light: #FFFFFF;
+    --button-color: #4A7C59;
+    --border-color: #DDDDDD;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +32,21 @@
 
 body {
     min-height: 100vh;
-    background-color: #e2f6e3;
+    background-color: var(--light-green-bg);
+}
+
+.plus-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
 }
 
 /* Sidebar */
@@ -16,20 +54,52 @@ body {
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 275px;
+    width: 250px;
     height: 100vh;
     position: fixed;
     box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
 }
 
 .sidebar-header {
     padding: 1.25rem;
-    color: #204724;
+    color: var(--text-color-green);
+    position: relative;
 }
 
 .sidebar-header p {
     font-size: 14px;
-    padding: 10px 0 10px;
+    padding: 8px 0 10px;
+}
+
+.sidebar nav {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar nav a {
+    color: var(--text-color-green);
+    padding: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.sidebar a.active {
+    background-color: var(--light-green-hover-color);
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+.sidebar nav a:hover {
+    background: var(--light-green-hover-color);
+}
+
+.sidebar-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 20px;
+    object-fit: contain;
 }
 
 .sidebar-header ul {
@@ -38,31 +108,466 @@ body {
     width: 100%;
 }
 
-.nav-sidebar ul li a {
-    color: #204724;
-    text-decoration: none;
-    font-size: 14px;
-    display: flex;
-    width: 100%;
-    padding: 12px 20px;
-    align-items: center;
-    transition: background-color 0.2s ease-in-out;
+.sidebar.hide {
+    transform: translateX(-100%);
+}
+
+/* Button Logout */
+.btn-logout {
+    display: block;
+    background: var(--button-color);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 5rem;
+    margin: 1rem auto 0;
+    width: fit-content;
+}
+
+.btn-logout:hover {
+    background: var(--green-hover-color);
+}
+
+/*
+|----------------------------------------
+| CSS Dashboard Utama
+|----------------------------------------
+*/
+.main-content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 1.25rem;
     box-sizing: border-box;
 }
 
-.nav-sidebar ul li a.active {
-    background-color: #e2f6e3;
+.main-header {
+    color: var(--text-color-dark);
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1rem;
     font-weight: 600;
-    transition: 0.2s ease-in-out ;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
 }
 
-.nav-sidebar ul li a:hover {
-    background: #e2f6e3;
+.card-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0f172a;
 }
 
-.sidebar-icon {
+.card-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.card-desc.warning {
+    color: #ea580c;
+}
+
+/*
+|----------------------------------------
+| Halaman Data Kambing
+|----------------------------------------
+*/
+.kambing-header {
+    color: var(--text-color-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-add-kambing {
+    background-color: var(--button-color);
+    ;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.btn-add-kambing:hover {
+    background-color: var(--green-hover-color);
+}
+
+.kambing-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 1.5rem;
+    margin-bottom: 30px;
+    clear: both;
+}
+
+.kambing-container p {
+    font-weight: 600;
+}
+
+.kambing-list-icon {
     width: 18px;
     height: 18px;
-    margin-right: 20px;
+    margin-right: 10px;
     object-fit: contain;
+}
+
+.kambing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.kambing-list p {
+    text-align: center;
+    padding: 2rem 0;
+    font-weight: 500;
+    color: var(--text-color-dark);
+}
+
+.kambing-card {
+    background: #fff;
+    border: 1px solid #d9f2dd;
+    border-left: 8px solid #88cc99;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kambing-card.warning {
+    background: #f8fef7;
+    border-left: 8px solid orange;
+}
+
+.kambing-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.kambing-icon {
+    font-size: 24px;
+    background: #d1f0d4;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.kambing-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.kambing-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Btn-Lihat */
+.btn-lihat,
+.btn-edit {
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+}
+
+/* Btn-Hapus */
+.btn-hapus {
+    background-color: var(--red-color);
+    color: white;
+    border: none;
+}
+
+.btn-hapus:hover {
+    background-color: #dc2626;
+}
+
+.status {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.status.green {
+    background: #c6f6d5;
+    color: #256029;
+}
+
+.status.orange {
+    background: #fde68a;
+    color: #92400e;
+}
+
+button.hapus {
+    background: #f87171;
+    color: white;
+}
+
+/*
+|----------------------------------------
+| Modal Kambing Form
+|----------------------------------------
+*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 4rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: #333;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    color: #555;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+input:read-only,
+select:disabled {
+    background-color: #f9f9f9;
+    color: #888;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.btn-simpan {
+    background-color: var(--button-color);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-batal {
+    background-color: #e5e7eb;
+    color: #333;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/*
+|----------------------------------------
+| Responsif Sidebar dan Halaman Utama
+|----------------------------------------
+*/
+
+/*
+|----------------------------------------
+| Monitoring Sensor Charts
+|----------------------------------------
+*/
+.sensor-charts-section {
+    margin-top: 2.5rem;
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+    color: var(--text-color-dark);
+}
+
+.kandang-charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Ini adalah kartu utama untuk setiap seksi kandang */
+.kandang-chart-card {
+    background: #ffffff; /* Background putih untuk seluruh area */
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Jarak antara header dan grid grafik */
+}
+
+.kandang-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0; /* Garis pemisah halus */
+}
+
+.kandang-header h3 {
+    color: var(--text-color-dark-green);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Sedikit lebih kecil agar pas */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Kartu individual untuk grafik sekarang tidak punya background/border sendiri */
+.chart-card {
+    /* Styling dipindahkan ke .kandang-chart-card */
+}
+
+.btn-add-data {
+    background-color: white;
+    color: var(--button-color);
+    border: 1px solid #DDDDDD;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-add-data:hover {
+    background-color: #f7f7f7;
+    border-color: #cccccc;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.btn-add-data .icon-plus {
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+}
+
+.chart-container {
+    position: relative;
+    height: 280px;
+    width: 100%;
+}
+
+/*
+|----------------------------------------
+| Modal Sensor Form
+|----------------------------------------
+*/
+#sensor-modal .form-group {
+    margin-bottom: 1rem;
+}
+
+#sensor-modal input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+#sensor-modal .btn-submit {
+    background-color: var(--button-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+#sensor-modal .btn-submit:hover {
+    background-color: var(--green-hover-color);
 }

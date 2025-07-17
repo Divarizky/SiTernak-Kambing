@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php';
+require_once('../../config/db_connect.php');
 
 $step = 1;
 $error = '';
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error = 'Nama dan username harus diisi.';
         } else {
             $sql = "SELECT id_user FROM users WHERE nama = ? AND username = ?";
-            $stmt = $mysqli->prepare($sql);
+            $stmt = $koneksi->prepare($sql);
             $stmt->bind_param("ss", $nama, $username);
             $stmt->execute();
             $stmt->store_result();
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_result($user_id);
                 $stmt->fetch();
                 $_SESSION['reset_user_id'] = $user_id;
-                $step = 2; // Move to step 2
+                $step = 2;
             } else {
                 $error = 'Nama atau username tidak ditemukan.';
             }
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
             $sql = "UPDATE users SET password = ? WHERE id_user = ?";
-            $stmt = $mysqli->prepare($sql);
+            $stmt = $koneksi->prepare($sql);
             $stmt->bind_param("si", $hashed_password, $user_id);
 
             if ($stmt->execute()) {
@@ -62,21 +62,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-$mysqli->close();
+
+$koneksi->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lupa Password - SiTernak Kambing</title>
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="../../assets/css/auth.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="auth-container">
         <div class="auth-icon">
-            <img src="../assets/images/icons/goat.png" alt="App Icon">
+            <img src="../../assets/images/icons/goat.png" alt="App Icon">
         </div>
 
         <div class="auth-header">
@@ -88,38 +92,40 @@ $mysqli->close();
         <?php endif; ?>
 
         <?php if ($step == 1): ?>
-            <p style="margin-bottom: 20px; color: #666;">Enter your details to reset your password.</p>
+            <p style="margin-bottom: 20px; color: #666;">Masukkan detail diri Anda untuk mengatur ulang kata sandi.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="auth-form">
                 <input type="hidden" name="step1" value="1">
                 <div class="form-group">
                     <span class="input-icon">👤</span>
-                    <input type="text" name="nama" id="nama" required value="<?php echo htmlspecialchars($nama); ?>" placeholder="Full Name">
+                    <input type="text" name="nama" id="nama" required value="<?php echo htmlspecialchars($nama); ?>" placeholder="Nama Lengkap">
                 </div>
                 <div class="form-group">
                     <span class="input-icon">@</span>
                     <input type="text" name="username" id="username" required value="<?php echo htmlspecialchars($username); ?>" placeholder="Username">
                 </div>
-                <button type="submit" class="auth-button">Verify</button>
+                <button type="submit" class="auth-button">Verifikasi</button>
             </form>
-        <?php else: // Step 2 ?>
-            <p style="margin-bottom: 20px; color: #666;">Create your new password.</p>
+        <?php else: // Step 2 
+        ?>
+            <p style="margin-bottom: 20px; color: #666;">Buat kata sandi baru Anda.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="auth-form">
                 <input type="hidden" name="step2" value="1">
                 <div class="form-group">
                     <span class="input-icon">🔒</span>
-                    <input type="password" name="new_password" id="new_password" required placeholder="New Password">
+                    <input type="password" name="new_password" id="new_password" required placeholder="Password Baru">
                 </div>
                 <div class="form-group">
                     <span class="input-icon">🔒</span>
-                    <input type="password" name="confirm_password" id="confirm_password" required placeholder="Confirm New Password">
+                    <input type="password" name="confirm_password" id="confirm_password" required placeholder="Konfirmasi Password Baru">
                 </div>
                 <button type="submit" class="auth-button">Reset Password</button>
             </form>
         <?php endif; ?>
-        
+
         <div class="auth-footer">
-            <a href="login.php">Back to Login</a>
+            <a href="login.php">Kembali ke Login</a>
         </div>
     </div>
 </body>
+
 </html>

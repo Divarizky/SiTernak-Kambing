@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once '../config/database.php';
+
+require_once('../../config/db_connect.php');
 
 $error = '';
 $username = '';
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = 'Username and password are required.';
     } else {
         $sql = "SELECT id_user, username, password, role FROM users WHERE username = ?";
-        $stmt = $mysqli->prepare($sql);
+        $stmt = $koneksi->prepare($sql);
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $user['id_user'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
-                header("location: ../dashboard.php"); // Redirect to dashboard
+                header("location: ../../index.php"); // Masuk ke halaman Dashboard Utama
                 exit;
             } else {
                 $error = 'Incorrect username or password.';
@@ -45,25 +46,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 }
-$mysqli->close();
+$koneksi->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - SiTernak Kambing</title>
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="../../assets/css/auth.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="auth-container">
         <div class="auth-icon">
-            <img src="../assets/images/icons/user-color.png" alt="User Icon">
+            <img src="../../assets/images/icons/user.png" alt="User Icon">
         </div>
 
         <div class="auth-header">
-            <h1>Welcome Back!</h1>
+            <h1>Login Admin</h1>
         </div>
 
         <?php if (!empty($message)): ?>
@@ -82,17 +86,12 @@ $mysqli->close();
                 <span class="input-icon">🔒</span>
                 <input type="password" name="password" id="password" required placeholder="Password">
             </div>
-            <div class="form-options">
-                <label class="remember-me">
-                    <input type="checkbox" name="remember"> Remember me
-                </label>
-                <a href="forgot_password.php">Forgot Password?</a>
-            </div>
             <button type="submit" class="auth-button">LOGIN</button>
             <div class="auth-footer">
-                <p>Don't have an account? <a href="../register.php">Sign Up</a></p>
+                <a href="forgot_password.php">Lupa Kata Sandi</a>
             </div>
         </form>
     </div>
 </body>
+
 </html>
