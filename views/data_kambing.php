@@ -59,6 +59,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     Tambah Data Kambing
                 </button>
             </div>
+            <!-- Menampilkan List Data Kambing -->
             <div class="kambing-container">
                 <p><img class="kambing-list-icon" src="../assets/images/icons/goat.png" alt="goat">Daftar Kambing (<?= count($kambingList) ?>)</p>
                 <div class="kambing-list">
@@ -66,19 +67,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <p>Belum ada data kambing</p>
                     <?php else: ?>
                         <?php foreach ($kambingList as $row): ?>
+                            <?php $sensor = getDataSensorByKandang($row['id_kandang']); ?>
                             <div class="kambing-card <?= strtolower($row['status_kesehatan']) == 'perlu perhatian' ? 'warning' : '' ?>">
                                 <div class="kambing-info">
                                     <div class="kambing-icon">🐐</div>
                                     <div>
                                         <strong><?= str_pad($row['name'], 3, '0', STR_PAD_LEFT) ?></strong><br>
-                                        <?= $row['age'] ?> bulan • <?= $row['jenis_kelamin'] ?> • <?= $row['berat'] ?: '0' ?> kg • <?= $row['ras'] ?>
+                                        <?= $row['age'] ?> bulan • <?= $row['jenis_kelamin'] ?> • <?= $row['berat'] ?: '0' ?> kg • <?= $row['ras'] ?> •
+                                        🌡️ <?= $sensor['suhu'] ?? '-' ?> °C • 💧 <?= $sensor['kelembapan'] ?? '-' ?> %
                                     </div>
                                 </div>
                                 <div class="kambing-actions">
                                     <span class="status <?= $row['status_kesehatan'] == 'Sehat' ? 'green' : 'orange' ?>">
                                         <?= $row['status_kesehatan'] ?? 'Tidak Diketahui' ?>
                                     </span>
-                                    <!-- Button Lihat, Edit, dan Hapus Kambing -->
                                     <button class="btn-lihat" data-kambing='<?= json_encode($row) ?>'>Lihat</button>
                                     <button class="btn-edit" data-kambing='<?= json_encode($row) ?>'>Edit</button>
                                     <button class="btn-hapus" data-kambing='<?= json_encode($row) ?>'>Hapus</button>

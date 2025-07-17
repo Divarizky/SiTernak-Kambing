@@ -13,7 +13,8 @@ $kandangList = getListKandang();
             <span class="close-button">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="formKambing" action="aksi_kambing.php" method="POST">
+            <!-- menghapus action="aksi_kambing.php" -->
+            <form id="formKambing" method="POST">
                 <!-- Hidden input untuk menyimpan ID dan Aksi -->
                 <input type="hidden" id="id_kambing" name="id_kambing">
                 <input type="hidden" id="action" name="action" value="create">
@@ -81,6 +82,16 @@ $kandangList = getListKandang();
                         <option value="Sakit">Sakit</option>
                         <option value="Perlu Perhatian">Perlu Perhatian</option>
                     </select>
+                </div>
+                <!-- Form Suhu -->
+                <div class="form-group">
+                    <label for="suhu">Suhu (°C)</label>
+                    <input type="number" step="0.1" name="suhu" class="form-control" required>
+                </div>
+                <!-- Form Kelembapan -->
+                <div class="form-group">
+                    <label for="kelembapan">Kelembapan (%)</label>
+                    <input type="number" name="kelembapan" min="0" max="100" class="form-control" required>
                 </div>
                 <!-- Form Button -->
                 <div class="form-actions">
