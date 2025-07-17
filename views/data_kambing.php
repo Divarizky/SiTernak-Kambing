@@ -59,6 +59,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     Tambah Data Kambing
                 </button>
             </div>
+            <!-- Menampilkan List Data Kambing -->
             <div class="kambing-container">
                 <p><img class="kambing-list-icon" src="../assets/images/icons/goat.png" alt="goat">Daftar Kambing (<?= count($kambingList) ?>)</p>
                 <div class="kambing-list">
@@ -78,7 +79,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                     <span class="status <?= $row['status_kesehatan'] == 'Sehat' ? 'green' : 'orange' ?>">
                                         <?= $row['status_kesehatan'] ?? 'Tidak Diketahui' ?>
                                     </span>
-                                    <!-- Button Lihat, Edit, dan Hapus Kambing -->
                                     <button class="btn-lihat" data-kambing='<?= json_encode($row) ?>'>Lihat</button>
                                     <button class="btn-edit" data-kambing='<?= json_encode($row) ?>'>Edit</button>
                                     <button class="btn-hapus" data-kambing='<?= json_encode($row) ?>'>Hapus</button>
@@ -92,6 +92,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <?php include 'form_kambing.php'; ?>
+
+    <!-- Scripts JS -->
     <script>
         const isLoggedIn = <?= isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true ? 'true' : 'false' ?>;
     </script>

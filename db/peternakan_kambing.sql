@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2025 at 05:24 PM
+-- Generation Time: Jul 17, 2025 at 06:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -33,6 +33,28 @@ CREATE TABLE `berat_kambing` (
   `tanggal` date DEFAULT NULL,
   `berat_kg` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_sensor`
+--
+
+CREATE TABLE `data_sensor` (
+  `id` int(11) NOT NULL,
+  `id_kandang` int(11) DEFAULT NULL,
+  `timestamp` datetime NOT NULL,
+  `suhu` decimal(4,1) NOT NULL,
+  `kelembapan` tinyint(3) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `data_sensor`
+--
+
+INSERT INTO `data_sensor` (`id`, `id_kandang`, `timestamp`, `suhu`, `kelembapan`) VALUES
+(6, 4, '2025-07-17 11:02:44', 28.0, 50),
+(7, 4, '2025-07-17 11:12:06', 30.0, 60);
 
 -- --------------------------------------------------------
 
@@ -131,6 +153,13 @@ ALTER TABLE `berat_kambing`
   ADD KEY `id_kambing` (`id_kambing`);
 
 --
+-- Indexes for table `data_sensor`
+--
+ALTER TABLE `data_sensor`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kandang` (`id_kandang`);
+
+--
 -- Indexes for table `kambing`
 --
 ALTER TABLE `kambing`
@@ -168,6 +197,12 @@ ALTER TABLE `berat_kambing`
   MODIFY `id_berat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `data_sensor`
+--
+ALTER TABLE `data_sensor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `kambing`
 --
 ALTER TABLE `kambing`
@@ -200,6 +235,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `berat_kambing`
   ADD CONSTRAINT `berat_kambing_ibfk_1` FOREIGN KEY (`id_kambing`) REFERENCES `kambing` (`id_kambing`);
+
+--
+-- Constraints for table `data_sensor`
+--
+ALTER TABLE `data_sensor`
+  ADD CONSTRAINT `data_sensor_ibfk_1` FOREIGN KEY (`id_kandang`) REFERENCES `kandang` (`id_kandang`);
 
 --
 -- Constraints for table `kambing`
