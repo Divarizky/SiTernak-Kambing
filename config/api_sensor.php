@@ -1,5 +1,5 @@
 <?php
-include 'config/db_connect.php'; // Langsung ke db_connect
+include 'db_connect.php';
 
 header('Content-Type: application/json');
 
@@ -28,7 +28,7 @@ if ($id_kandang > 0) {
     $stmt->close();
     echo json_encode($data);
 } else {
-    echo json_encode([]); // Return empty array if no id_kandang is provided
+    echo json_encode([]);
 }
 
 $koneksi->close();

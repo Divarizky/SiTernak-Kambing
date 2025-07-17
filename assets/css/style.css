@@ -3,6 +3,8 @@
 | Pengaturan CSS Dasar
 |----------------------------------------
 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 :root {
     --primary-green: #2E7d32;
     /* primary color */
@@ -27,17 +29,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
     min-height: 100vh;
     background-color: var(--light-green-bg);
+    font-family: 'Poppins', sans-serif;
 }
 
 .plus-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     margin-right: 10px;
     object-fit: contain;
 }
@@ -118,6 +120,8 @@ body {
     background: var(--button-color);
     color: white;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     cursor: pointer;
     border: none;
     border-radius: 6px;
@@ -171,6 +175,7 @@ body {
 }
 
 .card-value {
+    margin-bottom: 0.5rem;
     font-size: 2rem;
     font-weight: bold;
     color: #0f172a;
@@ -199,14 +204,15 @@ body {
 }
 
 .btn-add-kambing {
+    display: inline-flex;
     background-color: var(--button-color);
-    ;
     color: white;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
+    padding: 12px 20px;
     text-decoration: none;
-    display: inline-block;
+    text-align: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     margin: 4px;
     cursor: pointer;
@@ -297,12 +303,14 @@ body {
 /* Btn-Lihat */
 .btn-lihat,
 .btn-edit {
+    font-family: 'Poppins', sans-serif;
     border: 1px solid #cbd5e1;
     color: #0f172a;
 }
 
 /* Btn-Hapus */
 .btn-hapus {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--red-color);
     color: white;
     border: none;
@@ -348,7 +356,7 @@ button.hapus {
     height: 100%;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-content {
@@ -442,12 +450,6 @@ select:disabled {
 
 /*
 |----------------------------------------
-| Responsif Sidebar dan Halaman Utama
-|----------------------------------------
-*/
-
-/*
-|----------------------------------------
 | Monitoring Sensor Charts
 |----------------------------------------
 */
@@ -455,7 +457,7 @@ select:disabled {
     margin-top: 2.5rem;
 }
 
-.section-header {
+.sensor-charts-header {
     margin-bottom: 1.5rem;
     color: var(--text-color-dark);
 }
@@ -493,26 +495,22 @@ select:disabled {
 
 .charts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Sedikit lebih kecil agar pas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     width: 100%;
 }
 
-/* Kartu individual untuk grafik sekarang tidak punya background/border sendiri */
-.chart-card {
-    /* Styling dipindahkan ke .kandang-chart-card */
-}
-
 .btn-add-data {
+    display: inline-flex;
     background-color: white;
     color: var(--button-color);
     border: 1px solid #DDDDDD;
-    padding: 5px 10px;
-    text-align: center;
+    padding: 8px 14px;
     text-decoration: none;
-    display: inline-flex;
+    text-align: center;
     align-items: center;
-    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     border-radius: 6px;
@@ -526,8 +524,8 @@ select:disabled {
 }
 
 .btn-add-data .icon-plus {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
     margin-right: 6px;
 }
 
@@ -535,41 +533,6 @@ select:disabled {
     position: relative;
     height: 280px;
     width: 100%;
-}
-
-/*
-|----------------------------------------
-| Modal Sensor Form
-|----------------------------------------
-*/
-#sensor-modal .form-group {
-    margin-bottom: 1rem;
-}
-
-#sensor-modal input {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.95rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-}
-
-#sensor-modal .btn-submit {
-    background-color: var(--button-color);
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    width: 100%;
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-#sensor-modal .btn-submit:hover {
-    background-color: var(--green-hover-color);
 }
 
 .kambing-list {
@@ -669,6 +632,41 @@ button.hapus {
 
 /*
 |----------------------------------------
+| Modal Sensor Form
+|----------------------------------------
+*/
+#sensor-modal .form-group {
+    margin-bottom: 1rem;
+}
+
+#sensor-modal input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+#sensor-modal .btn-submit {
+    background-color: var(--button-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+#sensor-modal .btn-submit:hover {
+    background-color: var(--green-hover-color);
+}
+
+/*
+|----------------------------------------
 | Modal Kambing Form
 |----------------------------------------
 */
@@ -682,7 +680,7 @@ button.hapus {
     height: 100%;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-content {

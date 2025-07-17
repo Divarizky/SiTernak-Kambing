@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/db_connect.php'; // Langsung ke db_connect
+include 'db_connect.php';
 
 header('Content-Type: application/json');
 

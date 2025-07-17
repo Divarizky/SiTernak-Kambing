@@ -67,14 +67,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <p>Belum ada data kambing</p>
                     <?php else: ?>
                         <?php foreach ($kambingList as $row): ?>
-                            <?php $sensor = getDataSensorByKandang($row['id_kandang']); ?>
                             <div class="kambing-card <?= strtolower($row['status_kesehatan']) == 'perlu perhatian' ? 'warning' : '' ?>">
                                 <div class="kambing-info">
                                     <div class="kambing-icon">🐐</div>
                                     <div>
                                         <strong><?= str_pad($row['name'], 3, '0', STR_PAD_LEFT) ?></strong><br>
-                                        <?= $row['age'] ?> bulan • <?= $row['jenis_kelamin'] ?> • <?= $row['berat'] ?: '0' ?> kg • <?= $row['ras'] ?> •
-                                        🌡️ <?= $sensor['suhu'] ?? '-' ?> °C • 💧 <?= $sensor['kelembapan'] ?? '-' ?> %
+                                        <?= $row['age'] ?> bulan • <?= $row['jenis_kelamin'] ?> • <?= $row['berat'] ?: '0' ?> kg • <?= $row['ras'] ?>
                                     </div>
                                 </div>
                                 <div class="kambing-actions">
@@ -94,6 +92,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <?php include 'form_kambing.php'; ?>
+
+    <!-- Scripts JS -->
     <script>
         const isLoggedIn = <?= isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true ? 'true' : 'false' ?>;
     </script>

@@ -175,21 +175,6 @@ function deleteDataKambing($id)
     $stmt3->bind_param("i", $id);
     $success = $stmt3->execute();
 
-    // Fungsi untuk menghapus data sensor hanya jika tidak ada kambing lain yang pakai kandang itu
-    // if ($success && $id_kandang !== null) {
-    //     $stmtCek = $koneksi->prepare("SELECT COUNT(*) as jumlah FROM kambing WHERE id_kandang = ?");
-    //     $stmtCek->bind_param("i", $id_kandang);
-    //     $stmtCek->execute();
-    //     $resultCek = $stmtCek->get_result();
-    //     $jumlah = $resultCek->fetch_assoc()['jumlah'];
-
-    //     if ($jumlah == 0) {
-    //         $stmt4 = $koneksi->prepare("DELETE FROM data_sensor WHERE id_kandang = ?");
-    //         $stmt4->bind_param("i", $id_kandang);
-    //         $stmt4->execute();
-    //     }
-    // }
-
     return $success;
 }
 

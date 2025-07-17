@@ -46,9 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 }
-$koneksi->close();
 
+$koneksi->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 
